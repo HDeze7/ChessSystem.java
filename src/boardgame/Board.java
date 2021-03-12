@@ -27,4 +27,15 @@ public class Board {
 	public void setColumns(int columns) {
 		this.columns = columns;
 	}
+	
+	//O que esse método faz ?
+	public Piece piece(int row, int column) {
+		return pieces[row][column];//Ele vai me retornar a minha matriz pieces na linha row e na coluna column, e agora eu vou fazer uma sobrecarga desse método
+	}
+	
+	public Piece piece(Position position) {//Ele vai retornar a peça pela posição
+		return pieces[position.getRow()][position.getColumn()];//E agora então o meu método vai ter que retornar o meu row e o meu column em cada linha e coluna selecionada
+	}
+	
+	
 }
