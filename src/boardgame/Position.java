@@ -13,21 +13,19 @@ public class Position {
 	public int getRow() {
 		return Row;
 	}
-
 	public void setRow(int row) {
 		Row = row;
 	}
-
 	public int getColumn() {
 		return Column;
 	}
-
 	public void setColumn(int column) {
 		Column = column;
 	}
 
 	@Override
 	public String toString() {
-		return "Position [Row= " + Row + ", Column= " + Column + "]";
+		//return "Position [Row= " + Row + ", Column= " + Column + "]";
+		return Row + ", " + Column;
 	}	
 }
