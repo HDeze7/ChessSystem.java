@@ -7,7 +7,7 @@ public class Board {
 	private Piece[][] pieces; //Matriz
 	
 	public Board(int rows, int columns) {
-		if(rows < 0 || columns < 0) {//Programação defensiva, pois o tabuleiro que que ter pelo menos uma linha e uma coluna, não pode ser menor ou igual à zero!	
+		if(rows < 1 || columns < 1) {//Programação defensiva, pois o tabuleiro que que ter pelo menos uma linha e uma coluna, não pode ser menor ou igual à zero!	
 			throw new BoardException("Erro ao criar tabuleiro, é necessário que tenha pelo menos uma linha e uma coluna");
 		}
 		this.rows = rows;
