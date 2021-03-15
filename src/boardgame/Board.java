@@ -7,7 +7,7 @@ public class Board {
 	private Piece[][] pieces; //Matriz
 	
 	public Board(int rows, int columns) {
-		if(rows < 1 || columns < 1) {//Programação defensiva, pois o tabuleiro que que ter pelo menos uma linha e uma coluna, não pode ser menor ou igual à zero!	
+		if(rows < 0 || columns < 0) {//Programação defensiva, pois o tabuleiro que que ter pelo menos uma linha e uma coluna, não pode ser menor ou igual à zero!	
 			throw new BoardException("Erro ao criar tabuleiro, é necessário que tenha pelo menos uma linha e uma coluna");
 		}
 		this.rows = rows;
@@ -45,8 +45,20 @@ public class Board {
 			throw new BoardException ("There is already a piece on position " + position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;//Ele vai ter que ir na matriz de peças do meu tabuleiro, na linha([position.getRow()]), e na coluna ([position.getColumn()]), e vai ter que atribuir a essa posição da minha matriz de peças, a minha peça que veio aqui como argumento, que vai ser o piece. Lembrando que essa matriz aqui de peças, é a matriz de peças que está guardada aqui nesse tabuleiro. 
-		piece.position = position;//No caso aqui também agora, eu vou ter que falar qe essa peça não está mais na posição nula, ela está nessa posição aqui(Position position), então agora eu falo assim, piece.position =(recebe) position(que vai corresponder à Posição que declarei no método "public void placePiece(Piece piece, Position position)"
-		
+		piece.position = position;//No caso aqui também agora, eu vou ter que falar qe essa peça não está mais na posição nula, ela está nessa posição aqui(Position position), então agora eu falo assim, piece.position =(recebe) position(que vai corresponder à Posição que declarei no método "public void placePiece(Piece piece, Position position)"	
+	}
+	
+	public Piece removePiece(Position position) {
+		if(!positionExists(position)) {
+			throw new BoardException("Position not on the board"); 
+		}
+		if(piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
 	}
 	
 	private boolean positionExists(int row, int column) {//Metodo auxiliar para o método abaixo, ele vai receber uma linha e uma coluna. Mas por que isso está sendo feito ? Porquê dentro da classe, vai ter um momento em que vai ser mais fácil testar pela linha e pela coluna do que pela posição. Quando que uma posição numa dada linha de uma coluna existe? É quando essa posição, ela está dentro do tabuleiro, ou seja, essa linha tem que ser: 
