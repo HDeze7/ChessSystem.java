@@ -1,7 +1,6 @@
 package chess;
 
 import boardgame.Board;
-import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Torre;
 
@@ -30,10 +29,14 @@ public class ChessMatch {
 		return mat;//Terminado de fazer o "for", eu peço para ele me retornar a minha matriz mat. Ou seja isso retorna a matriz de peças da minha partida de xadrez
 	}
 	
+	private void placeNewPiece(char column, int row, ChessPiece piece) {
+		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+	}
+	
 	private void initialSetup() {//Esse método vai ser responsável por iniciar a partida de xadrez, colocando as peças no tabuleiro.
 		//Colocando peças no tabuleiro para teste:
-		board.placePiece(new Torre(board, Color.WHITE), new Position(2, 1));
-		board.placePiece(new King (board, Color.BLACK), new Position(0, 4));
-		board.placePiece(new King (board, Color.WHITE), new Position(7, 4));
+		placeNewPiece('B', 6, new Torre(board, Color.WHITE));
+		placeNewPiece('E', 8, new King (board, Color.BLACK));
+		placeNewPiece('E', 1, new King (board, Color.WHITE));
 	}
 }
