@@ -1,6 +1,9 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Torre;
 
 /*Essa classe "ChessMatch, vai ser o coração do nosso sistema de xadrez,
   é nessa classe que vão ter as regras do nosso jogo de xadrez.  
@@ -11,6 +14,7 @@ public class ChessMatch {
 	
 	public ChessMatch() {//Quem tem que saber qual a dimensão do meu tabuleiro, é essa classe ChessMatch, então é nssa classe que eu vou dizer que ele é (8,8)
 		board = new Board (8,8);
+		initialSetup();
 	}
 	
 	//O que esse método vai ter que fazer ?
@@ -24,5 +28,12 @@ public class ChessMatch {
 			}
 		}
 		return mat;//Terminado de fazer o "for", eu peço para ele me retornar a minha matriz mat. Ou seja isso retorna a matriz de peças da minha partida de xadrez
+	}
+	
+	private void initialSetup() {//Esse método vai ser responsável por iniciar a partida de xadrez, colocando as peças no tabuleiro.
+		//Colocando peças no tabuleiro para teste:
+		board.placePiece(new Torre(board, Color.WHITE), new Position(2, 1));
+		board.placePiece(new King (board, Color.BLACK), new Position(0, 4));
+		board.placePiece(new King (board, Color.WHITE), new Position(7, 4));
 	}
 }

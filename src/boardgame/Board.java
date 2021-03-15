@@ -37,5 +37,11 @@ public class Board {
 		return pieces[position.getRow()][position.getColumn()];//E agora então o meu método vai ter que retornar o meu row e o meu column em cada linha e coluna selecionada
 	}
 	
+	public void placePiece(Piece piece, Position position) {//O que esse método vai fazer ?
+		pieces[position.getRow()][position.getColumn()] = piece;//Ele vai ter que ir na matriz de peças do meu tabuleiro, na linha([position.getRow()]), e na coluna ([position.getColumn()]), e vai ter que atribuir a essa posição da minha matriz de peças, a minha peça que veio aqui como argumento, que vai ser o piece. Lembrando que essa matriz aqui de peças, é a matriz de peças que está guardada aqui nesse tabuleiro. 
+		piece.position = position;//No caso aqui também agora, eu vou ter que falar qe essa peça não está mais na posição nula, ela está nessa posição aqui(Position position), então agora eu falo assim, piece.position =(recebe) position(que vai corresponder à Posição que declarei no método "public void placePiece(Piece piece, Position position)"
+		
+	}
+	
 	
 }
